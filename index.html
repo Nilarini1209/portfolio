@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nilarini Devaraj — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      position: relative;
+      color: #e8e8e8;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a;
+      position: relative; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #1a1a1a; border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: #fff; letter-spacing: 0.03em;
+    }
+    .nav-pill {
+      display: flex; gap: 0; list-style: none;
+      background: #111; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 40px; padding: 4px;
+    }
+    .nav-pill a {
+      font-size: 13px; color: #666; padding: 6px 18px;
+      border-radius: 40px; transition: all 0.2s;
+    }
+    .nav-pill a:hover, .nav-pill a.active { color: #fff; background: #1e1e1e; }
+    .nav-cta {
+      font-size: 13px; font-weight: 600; padding: 8px 20px;
+      border-radius: 8px; background: #4f8ef7; color: #fff;
+      display: inline-flex; align-items: center; gap: 7px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: #3a7aee; transform: translateY(-1px); }
+    .nav-cta svg { width: 15px; height: 15px; fill: none; stroke: #fff; flex-shrink: 0; }
+
+    /* HERO — centered single column */
+    .hero { position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 7rem 3rem 4rem;
+      max-width: 760px; margin: 0 auto;
+    }
+    .hero-left { display: flex; flex-direction: column; gap: 1.1rem; align-items: center; }
+    .hero-greeting { font-size: 14px; color: #555; font-weight: 400; }
+    .hero-name {
+      font-size: clamp(40px, 5.5vw, 66px); font-weight: 700;
+      line-height: 1.05; color: #fff; letter-spacing: -0.025em;
+    }
+    .hero-sub { font-size: 15px; color: #555; line-height: 1.75; max-width: 480px; }
+    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 0.4rem; justify-content: center; }
+    .btn-mail {
+      font-size: 13px; font-weight: 600; padding: 11px 22px;
+      background: #4f8ef7; color: #fff; border-radius: 8px;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-mail:hover { background: #3a7aee; transform: translateY(-1px); }
+    .btn-mail svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    .btn-download {
+      font-size: 13px; font-weight: 500; padding: 11px 22px;
+      background: transparent; color: #ccc;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn-download:hover { color: #fff; border-color: rgba(255,255,255,0.3); transform: translateY(-1px); }
+    .btn-download svg { width: 14px; height: 14px; stroke: currentColor; flex-shrink: 0; }
+    .btn-ghost {
+      font-size: 13px; padding: 11px 22px;
+      background: transparent; color: #777;
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.25); transform: translateY(-1px); }
+    .hero-socials { display: flex; gap: 10px; margin-top: 0.3rem; justify-content: center; }
+    .social-btn {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: #111; border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .social-btn:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+    .social-btn svg { width: 16px; height: 16px; fill: #777; }
+    .hero-stats {
+      display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center;
+      padding-top: 2rem; margin-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .stat-num { font-size: 30px; font-weight: 700; color: #fff; display: block; line-height: 1; }
+    .stat-label { font-size: 11px; color: #444; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; display: block; }
+
+    /* SECTIONS */
+    .wrap { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .sec-head { text-align: center; margin-bottom: 3rem; }
+    .sec-head h2 { font-size: 30px; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+    .sec-head p { font-size: 13px; color: #444; margin-top: 5px; }
+    .strip { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
+    .strip h2 { font-size: 26px; font-weight: 700; color: #fff; letter-spacing: -0.02em; white-space: nowrap; }
+    .strip-line { flex: 1; height: 1px; background: rgba(255,255,255,0.05); }
+    .strip-count { font-size: 12px; color: #333; white-space: nowrap; }
+
+    /* GRIDS */
+    .grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+    .grid3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px; }
+    .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+
+    /* SERVICE CARD */
+    .svc-card {
+      background: #111; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 1.6rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .svc-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-3px); }
+    .svc-card h3 { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+    .svc-card p { font-size: 13px; color: #555; line-height: 1.65; margin-bottom: 1.2rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { font-size: 12px; padding: 5px 14px; background: #181818; border: 1px solid rgba(255,255,255,0.07); border-radius: 6px; color: #777; }
+
+    /* ABOUT */
+    .about-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .about-inner > p { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 2.5rem; }
+    .approach-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 2.5rem; }
+    .ap-card { background: #111; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 1rem; display: flex; align-items: center; gap: 10px; text-align: left; }
+    .ap-num { font-size: 11px; font-weight: 700; color: #333; min-width: 20px; }
+    .ap-card span { font-size: 13px; color: #777; }
+    .about-stats { display: flex; justify-content: center; gap: 4rem; }
+    .as-num { font-size: 38px; font-weight: 700; color: #fff; display: block; line-height: 1; }
+    .as-label { font-size: 11px; color: #444; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; display: block; }
+
+    /* SITE CARD */
+    .site-card {
+      background: #111; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; padding: 1.4rem;
+      display: flex; flex-direction: column; gap: 8px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .site-card:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-3px); }
+    .site-top { display: flex; align-items: center; gap: 10px; }
+    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 7px #4ade8066; flex-shrink: 0; }
+    .site-card h3 { font-size: 14px; font-weight: 600; color: #ddd; }
+    .site-url { font-size: 12px; color: #383838; padding-left: 17px; }
+    .site-visit { font-size: 12px; color: #444; padding-left: 17px; display: inline-flex; align-items: center; gap: 4px; transition: color 0.2s; margin-top: 2px; }
+    .site-card:hover .site-visit { color: #aaa; }
+
+    /* PROJECT CARD */
+    .proj-card {
+      background: #111; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; padding: 2rem;
+      display: flex; flex-direction: column; gap: 12px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .proj-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-3px); }
+    .proj-idx { font-size: 11px; font-weight: 700; color: #2a2a2a; text-transform: uppercase; letter-spacing: 0.1em; }
+    .proj-card h3 { font-size: 18px; font-weight: 700; color: #fff; line-height: 1.3; }
+    .proj-card p { font-size: 13px; color: #555; line-height: 1.7; }
+    .proj-hl { font-size: 13px; font-weight: 600; color: #4ade80; display: inline-flex; align-items: center; gap: 5px; }
+    .ptags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 2px; }
+    .ptag { font-size: 11px; padding: 4px 12px; background: #181818; border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; color: #555; }
+
+    /* EXPERIENCE */
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-row { display: grid; grid-template-columns: 220px 1fr; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .exp-row:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
+    .exp-date { font-size: 11px; color: #383838; text-transform: uppercase; letter-spacing: 0.07em; }
+    .exp-co { font-size: 13px; color: #555; margin-top: 5px; line-height: 1.5; }
+    .exp-r h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .exp-r ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .exp-r li { font-size: 13px; color: #555; padding-left: 18px; position: relative; line-height: 1.65; }
+    .exp-r li::before { content: '→'; position: absolute; left: 0; color: #2d2d2d; font-size: 11px; top: 2px; }
+
+    /* CERTS */
+    .cert-sub { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #383838; margin-bottom: 12px; margin-top: 2.5rem; }
+    .cert-sub:first-child { margin-top: 0; }
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+    .cert-card { background: #111; border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.2rem; display: flex; flex-direction: column; gap: 6px; transition: border-color 0.2s; }
+    .cert-card:hover { border-color: rgba(255,255,255,0.14); }
+    .cbadge { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; width: fit-content; text-transform: uppercase; letter-spacing: 0.07em; }
+    .cbadge.course { background: rgba(255,255,255,0.05); color: #666; }
+    .cbadge.intern { background: rgba(74,222,128,0.08); color: #4ade80; }
+    .cert-card h4 { font-size: 13px; font-weight: 600; color: #ddd; line-height: 1.4; }
+    .cert-card .issuer { font-size: 12px; color: #383838; }
+    .cert-card a { font-size: 12px; color: #555; display: inline-flex; align-items: center; gap: 4px; margin-top: 4px; transition: color 0.2s; }
+    .cert-card a:hover { color: #aaa; }
+
+    /* CONTACT */
+    .contact-box {
+      background: #111; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px; padding: 4rem 3rem;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: 1.4rem;
+    }
+    .contact-box h2 { font-size: 34px; font-weight: 700; color: #fff; letter-spacing: -0.025em; line-height: 1.2; }
+    .contact-box > p { font-size: 14px; color: #555; max-width: 400px; }
+    .contact-btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 0.4rem; }
+    .contact-note { font-size: 12px; color: #333; }
+
+    /* FOOTER */
+    footer { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 1.5rem 3rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #383838; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-greeting { animation: fadeUp 0.5s 0.05s both; }
+    .hero-name     { animation: fadeUp 0.5s 0.15s both; }
+    .hero-sub      { animation: fadeUp 0.5s 0.25s both; }
+    .hero-btns     { animation: fadeUp 0.5s 0.32s both; }
+    .hero-socials  { animation: fadeUp 0.5s 0.4s both; }
+    .hero-stats    { animation: fadeUp 0.5s 0.48s both; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-pill { display: none; }
+      .hero { position: relative; z-index: 1; padding: 7rem 1.5rem 3rem; }
+      .wrap { position: relative; z-index: 1; padding: 3.5rem 1.5rem; }
+      .exp-row { grid-template-columns: 1fr; gap: 0.4rem; }
+      .approach-row { grid-template-columns: 1fr; }
+      .about-stats { gap: 2.5rem; }
+      footer { position: relative; z-index: 1; flex-direction: column; gap: 6px; text-align: center; }
+      .contact-box { padding: 2.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<canvas id="bg-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ND</div>
+  <ul class="nav-pill">
+    <li><a href="#hero" class="active">Home</a></li>
+    <li><a href="#services">Expertise</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#websites">Projects</a></li>
+  </ul>
+  <a href="https://mail.google.com/mail/?view=cm&to=nilarinidevaraj@gmail.com" target="_blank" class="nav-cta">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+    Let's Talk
+  </a>
+</nav>
+
+<!-- HERO — centered, no photo -->
+<div class="hero" id="hero">
+  <div class="hero-left">
+    <span class="hero-greeting">Hi, I'm Nilarini Devaraj</span>
+    <h1 class="hero-name">Data Science &amp; <br>Full Stack Developer</h1>
+    <p class="hero-sub">Building data-driven applications by combining machine learning with scalable web development to solve real-world problems.</p>
+    <div class="hero-btns">
+      <a href="https://mail.google.com/mail/?view=cm&to=nilarinidevaraj@gmail.com" target="_blank" class="btn-mail">
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        Let's Talk
+      </a>
+      <a href="NILARINI-RESUME.pdf" download="Nilarini_Devaraj_Resume.pdf" class="btn-download">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Resume
+      </a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://linkedin.com/in/nilarinidevaraj/" target="_blank" class="social-btn" title="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://github.com/Nilarini1209" target="_blank" class="social-btn" title="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="stat-num">6+</span><span class="stat-label">Production Websites</span></div>
+      <div><span class="stat-num">87%</span><span class="stat-label">ML Model Accuracy</span></div>
+      <div><span class="stat-num">50K+</span><span class="stat-label">Data Records Processed</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="wrap reveal" id="services">
+  <div class="sec-head">
+    <h2>Core Expertise</h2>
+    <p>Key areas I specialise in</p>
+  </div>
+  <div class="grid4">
+    <div class="svc-card">
+      <h3>Machine Learning</h3>
+      <p>Developing predictive models using Python, TensorFlow, and Scikit-learn for classification, analysis, and data-driven decision making.</p>
+      <div class="tags"><span class="tag">TensorFlow</span><span class="tag">Model Building</span></div>
+    </div>
+    <div class="svc-card">
+      <h3>Data Analysis</h3>
+      <p>Cleaning, analyzing, and visualizing large datasets to extract actionable insights using Pandas, SQL, and data visualization tools.</p>
+      <div class="tags"><span class="tag">EDA</span><span class="tag">Visualization</span></div>
+    </div>
+    <div class="svc-card">
+      <h3>Full Stack Development</h3>
+      <p>Building end-to-end web applications with responsive UI, authentication systems, dashboards, and database integration.</p>
+      <div class="tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span></div>
+    </div>
+    <div class="svc-card">
+      <h3>Data-Driven Applications</h3>
+      <p>Integrating machine learning models into real-world applications to deliver scalable and practical solutions.</p>
+      <div class="tags"><span class="tag">Deployment</span><span class="tag">Integration</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="wrap reveal" id="about">
+  <div class="sec-head">
+    <h2>About Me</h2>
+    <p>My background, approach and what drives me</p>
+  </div>
+  <div class="about-inner">
+    <p>I am a Computer Science graduate specialising in Data Science, with hands-on experience in machine learning, data analysis, and full stack development. I work with tools like Python, SQL, Pandas, NumPy, and TensorFlow to build predictive models and extract meaningful insights from data. Alongside this, I develop end-to-end web applications using HTML, CSS, JavaScript, and PHP, including authentication systems, dashboards, and database integration. My focus is on building scalable, data-driven solutions that solve real-world problems in a practical and efficient way.</p>
+    <div class="approach-row">
+      <div class="ap-card"><span class="ap-num">01</span><span>Analyze data & extract insights &amp; goals</span></div>
+      <div class="ap-card"><span class="ap-num">02</span><span>Build ML models & data pipelines</span></div>
+      <div class="ap-card"><span class="ap-num">03</span><span>Develop scalable web applications</span></div>
+    </div>
+    <div class="about-stats">
+      <div><span class="as-num">8+</span><span class="as-label">Projects completed</span></div>
+      <div><span class="as-num">6+</span><span class="as-label">Clients served</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="wrap reveal" id="skills">
+  <div class="sec-head">
+    <h2>Skills</h2>
+    <p>Key technologies for machine learning, data analysis, and full stack development</p>
+  </div>
+  <div class="grid4">
+    <div class="svc-card">
+      <h3>Programming & Databases</h3>
+      <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">JavaScript</span><span class="tag">PHP</span></div>
+    </div>
+    <div class="svc-card">
+      <h3>Machine Learning & Data</h3>
+      <div class="tags"><span class="tag">Scikit-learn</span><span class="tag">TensorFlow</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">EDA</span><span class="tag">Model Evaluation</span></div>
+    </div>
+    <div class="svc-card">
+      <h3>Web Development</h3>
+      <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive Design</span><span class="tag">Authentication</span><span class="tag">Dashboard UI</span></div>
+    </div>
+    <div class="svc-card">
+      <h3>Tools & Visualization</h3>
+      <div class="tags"><span class="tag">Tableau</span><span class="tag">Matplotlib</span><span class="tag">Excel</span><span class="tag">Jupyter</span><span class="tag">VS Code</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WEBSITES -->
+<section class="wrap reveal" id="websites">
+  <div class="strip">
+    <h2>Websites I Built</h2>
+    <span class="strip-line"></span>
+    <span class="strip-count">6 live sites</span>
+  </div>
+  <div class="grid3">
+    <a class="site-card" href="https://wrapsandknots.com/" target="_blank">
+      <div class="site-top"><span class="live-dot"></span><h3>Wraps &amp; Knots</h3></div>
+      <p class="site-url">wrapsandknots.com</p>
+      <span class="site-visit">Visit site ↗</span>
+    </a>
+    <a class="site-card" href="https://aarogwellness.life/" target="_blank">
+      <div class="site-top"><span class="live-dot"></span><h3>Aarog Wellness</h3></div>
+      <p class="site-url">aarogwellness.life</p>
+      <span class="site-visit">Visit site ↗</span>
+    </a>
+    <a class="site-card" href="https://ayattiwellness.life/" target="_blank">
+      <div class="site-top"><span class="live-dot"></span><h3>Ayatti Wellness</h3></div>
+      <p class="site-url">ayattiwellness.life</p>
+      <span class="site-visit">Visit site ↗</span>
+    </a>
+    <a class="site-card" href="https://lakshmirajaandassociates.com/" target="_blank">
+      <div class="site-top"><span class="live-dot"></span><h3>Lakshmi Raja &amp; Associates</h3></div>
+      <p class="site-url">lakshmirajaandassociates.com</p>
+      <span class="site-visit">Visit site ↗</span>
+    </a>
+    <a class="site-card" href="https://www.sparcphysio.com.in/" target="_blank">
+      <div class="site-top"><span class="live-dot"></span><h3>SPARC Physio</h3></div>
+      <p class="site-url">sparcphysio.com.in</p>
+      <span class="site-visit">Visit site ↗</span>
+    </a>
+    <a class="site-card" href="https://aalasyaspa.life/" target="_blank">
+      <div class="site-top"><span class="live-dot"></span><h3>Aalasya Spa</h3></div>
+      <p class="site-url">aalasyaspa.life</p>
+      <span class="site-visit">Visit site ↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="wrap reveal">
+  <div class="strip">
+    <h2>Projects</h2>
+    <span class="strip-line"></span>
+    <span class="strip-count">3 featured</span>
+  </div>
+  <div class="grid2">
+    <div class="proj-card">
+      <span class="proj-idx">Project 01</span>
+      <h3>Womandura – PCOD Support App</h3>
+      <p>A health tracking web application with authentication and dashboard features managing 100+ user health records. Identified and resolved 15+ bugs through systematic testing.</p>
+      <p class="proj-hl">↑ 30% interaction efficiency</p>
+      <div class="ptags"><span class="ptag">HTML/CSS</span><span class="ptag">JavaScript</span><span class="ptag">Authentication</span><span class="ptag">Dashboard</span></div>
+    </div>
+    <div class="proj-card">
+      <span class="proj-idx">Project 02</span>
+      <h3>Gastrointestinal Disorder Detection using RNN</h3>
+      <p>Deep learning RNN model built with Python and TensorFlow. Processed 8,000+ medical images using normalisation, resizing, and noise removal. Improved performance by 12%.</p>
+      <p class="proj-hl">87% classification accuracy</p>
+      <div class="ptags"><span class="ptag">Python</span><span class="ptag">TensorFlow</span><span class="ptag">RNN</span><span class="ptag">Image Processing</span></div>
+    </div>
+    <div class="proj-card">
+      <span class="proj-idx">Project 03</span>
+      <h3>Job Market Analysis using Python</h3>
+      <p>Analyzed large-scale job market datasets using Python to identify in-demand skills, roles, and salary trends in the data industry. Performed data cleaning, preprocessing, and exploratory analysis to uncover key hiring patterns across locations and domains.</p>
+      <p class="proj-hl">Insights on high-demand roles, top locations & salary trends</p>
+      <div class="ptags"><span class="ptag">Python</span><span class="ptag">Pandas</span><span class="ptag">Matplotlib</span><span class="ptag">EDA</span><span class="ptag">Data Visualization</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="wrap reveal" id="experience">
+  <div class="strip"><h2>Experience</h2><span class="strip-line"></span></div>
+  <div class="exp-list">
+    <div class="exp-row">
+      <div>
+        <p class="exp-date">Mar 2025 – Sep 2025</p>
+        <p class="exp-co">XL Management Services<br>Chennai</p>
+      </div>
+      <div class="exp-r">
+        <h3>Full Stack Trainee</h3>
+        <ul>
+          <li>Built and deployed 5+ responsive web applications using HTML, CSS, JavaScript, and PHP, supporting real client use cases</li>
+          <li>Optimized application performance and reduced load time by 18% through testing and code improvements</li>
+          <li>Diagnosed and resolved 20+ technical issues, improving system stability and user experience</li>
+          <li>Implemented authentication systems and dynamic dashboards with database integration</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div>
+        <p class="exp-date">Jul 2022 – Sep 2022</p>
+        <p class="exp-co">Shiash Info Solutions Pvt Ltd<br>Chennai</p>
+      </div>
+      <div class="exp-r">
+        <h3>Data Science Intern</h3>
+        <ul>
+          <li>Developed a scalable data processing pipeline handling 50,000+ records using Python and Pandas</li>
+          <li>Improved sentiment analysis model accuracy from 72% to 88% through feature engineering and tuning</li>
+          <li>Performed data cleaning and preprocessing, reducing inconsistencies by 25% and improving data quality</li>
+          <li>Applied exploratory data analysis (EDA) to uncover patterns and insights from large datasets</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="strip" style="margin-top:3.5rem;"><h2 style="font-size:22px;">Education</h2><span class="strip-line"></span></div>
+  <div class="exp-list">
+    <div class="exp-row">
+      <div>
+        <p class="exp-date">2020 – 2024</p>
+        <p class="exp-co">Annamalai University<br>Chidambaram</p>
+      </div>
+      <div class="exp-r">
+        <h3>B.E. Computer Science &amp; Engineering (Data Science)</h3>
+        <ul><li>CGPA: 8.48 / 10</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="wrap reveal" id="certifications">
+  <div class="strip"><h2>Certifications</h2><span class="strip-line"></span></div>
+  <p class="cert-sub">Course certifications</p>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <span class="cbadge course">Course</span>
+      <h4>Deep Learning</h4>
+      <span class="issuer">IIT Ropar via NPTEL · Score: 60%</span>
+      <a href="https://drive.google.com/file/d/1bskmpitT8_AMDw8XVqF__UC8NzxaJH-5/view?usp=sharing" target="_blank">View certificate ↗</a>
+    </div>
+    <div class="cert-card">
+      <span class="cbadge course">Course</span>
+      <h4>Machine Learning with Python</h4>
+      <span class="issuer">IBM via Coursera</span>
+      <a href="https://drive.google.com/file/d/1I764j97thATB3qeX6DFQDxcT5_ZRwMu1/view?usp=sharing" target="_blank">View certificate ↗</a>
+    </div>
+    <div class="cert-card">
+      <span class="cbadge course">Course</span>
+      <h4>Data Visualization: Empowering Business</h4>
+      <span class="issuer">Accenture via Forage</span>
+      <a href="https://drive.google.com/file/d/1QexKkTceNOjajgA7_83_YL_RHk0upaYw/view?usp=sharing" target="_blank">View certificate ↗</a>
+    </div>
+    <div class="cert-card">
+      <span class="cbadge course">Course</span>
+      <h4>Advanced Diploma in Python Programming</h4>
+      <span class="issuer">CSC Computer Software College</span>
+      <a href="https://drive.google.com/file/d/1SOVFMnrVTKGIwCHJ39wD6FY3RgqNt62v/view?usp=sharing" target="_blank">View certificate ↗</a>
+    </div>
+    <div class="cert-card">
+      <span class="cbadge course">Course</span>
+      <h4>Data Analysis and Visualization with Power BI</h4>
+      <span class="issuer">Microsoft via Coursera</span>
+      <a href="https://drive.google.com/file/d/1ZGv8RqOa6MigELMAoXFD9uokBWgOD6EC/view?usp=sharing" target="_blank">View certificate ↗</a>
+    </div>
+    <div class="cert-card">
+      <span class="cbadge course">Course</span>
+      <h4>Data Analysis with R Programming</h4>
+      <span class="issuer">Google via Coursera</span>
+      <a href="https://drive.google.com/file/d/1gekibZ7L-ReVhOmD-9yoU5KMofxgqBut/view?usp=sharing" target="_blank">View certificate ↗</a>
+    </div>
+    <div class="cert-card">
+      <span class="cbadge course">Course</span>
+      <h4>MySQL Bootcamp: Go from Zero to Hero</h4>
+      <span class="issuer">Udemy</span>
+      <a href="https://drive.google.com/file/d/1cYJSKijOPjCVjeNzDp6utnHFJJ3XnOLe/view?usp=sharing" target="_blank">View certificate ↗</a>
+    </div>
+  </div>
+  <p class="cert-sub" style="margin-top:2.5rem;">Internship certificates</p>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <span class="cbadge intern">Internship</span>
+      <h4>Full Stack Development Internship</h4>
+      <span class="issuer">XL Management Services, Chennai</span>
+      <a href="https://drive.google.com/file/d/1Ix5K-YZ5vyWY-1j2vUE-VNIwJA8nAO_v/view?usp=sharing" target="_blank">View certificate ↗</a>
+    </div>
+    <div class="cert-card">
+      <span class="cbadge intern">Internship</span>
+      <h4>Data Science Internship</h4>
+      <span class="issuer">Shiash Info Solutions Pvt Ltd, Chennai</span>
+      <a href="https://drive.google.com/file/d/1Wv-JUzcBqi8ESTE2_nfIT4cta1q0Tf2G/view?usp=sharing" target="_blank">View certificate ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="wrap reveal" id="contact">
+  <div class="contact-box">
+    <h2>Let's Work Together</h2>
+    <p>Open to opportunities in data science and full stack development, focused on building data-driven applications and solving real-world problems through machine learning and scalable systems.</p>
+    <div class="contact-btns">
+      <a href="https://mail.google.com/mail/?view=cm&to=nilarinidevaraj@gmail.com" target="_blank" class="btn-mail">
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        Send Email
+      </a>
+      <a href="NILARINI-RESUME.pdf" download="Nilarini_Devaraj_Resume.pdf" class="btn-download">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Resume
+      </a>
+      <a href="https://linkedin.com/in/nilarinidevaraj/" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+      <a href="https://github.com/Nilarini1209" target="_blank" class="btn-ghost">GitHub ↗</a>
+    </div>
+    <p class="contact-note">nilarinidevaraj@gmail.com · Chennai, India</p>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Nilarini Devaraj</span>
+  <span>Data Science & Full Stack Developer</span>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  const secs = document.querySelectorAll('[id]');
+  const links = document.querySelectorAll('.nav-pill a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+  });
+</script>
+
+<script>
+(function(){
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, dots;
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function init(){
+    resize();
+    dots = Array.from({length: 80}, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      r: Math.random() * 1.6 + 0.5,
+      color: Math.random() > 0.6 ? '74,222,128' : '79,142,247'
+    }));
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    dots.forEach(d => {
+      d.x += d.vx; d.y += d.vy;
+      if(d.x < 0 || d.x > W) d.vx *= -1;
+      if(d.y < 0 || d.y > H) d.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(${d.color},0.75)`;
+      ctx.fill();
+    });
+    for(let i=0;i<dots.length;i++){
+      for(let j=i+1;j<dots.length;j++){
+        const dx = dots[i].x - dots[j].x;
+        const dy = dots[i].y - dots[j].y;
+        const dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist < 120){
+          ctx.beginPath();
+          ctx.moveTo(dots[i].x, dots[i].y);
+          ctx.lineTo(dots[j].x, dots[j].y);
+          ctx.strokeStyle = `rgba(79,142,247,${0.12*(1-dist/120)})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  init();
+  draw();
+})();
+</script>
+
+</body>
+</html>
